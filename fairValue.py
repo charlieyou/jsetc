@@ -1,5 +1,5 @@
 from __future__ import division
-import strategy
+from strategy import Strategy
 
 class FairValue(Strategy):
 	fairValues = {"AAPL": [None,None], "BOND": [None,None], "GOOG": [None,None], "MSFT": [None,None], "NOKFH": [None,None], "NOKUS": [None,None], "XLK": [None,None]}
