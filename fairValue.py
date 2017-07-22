@@ -30,11 +30,11 @@ class FairValue(Strategy):
 		Returns a list of trades (buy/sell, symbol, price, size).
 		"""
 		if(data['type']!='book'):
-			return
+			return trades
 		trades = []
 		fv = sum(fairValues[data['symb']])
 		if(fv[0]==None or fv[1]==None):
-			return
+			return trades
 		fv = sum(fv)/2
 		updateValues(data)
 		for entry in data['buy']:
