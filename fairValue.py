@@ -1,3 +1,5 @@
+import strategy
+
 class FairValue(Strategy):
 
 	def __init__(self):
