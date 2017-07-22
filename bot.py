@@ -35,7 +35,7 @@ def read_exchange(exchange):
 
 
 #################### TRADING ALGORITHM ####################
-def trade(data):
+def trade(exchange):
     while True:
         data = read_exchange(exchange)
         bond_trade(exchange)
