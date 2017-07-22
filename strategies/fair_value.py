@@ -33,15 +33,15 @@ def trade(exchange):
     updateValues(data, symb)
     if(fv[0] == None or fv[1] == None):
         return trades
-    
+
     fv = fvList[symb]
     fv = sum(fv)/2
 
     for entry in data['buy']:
-        if(int(entry[0]) > fv):
+        if(int(entry[0]) > fv + 10):
             trades.append(['SELL', symb, entry[0], entry[1]])
     for entry in data['sell']:
-        if(int(entry[0]) < fv):
+        if(int(entry[0]) < fv - 10):
             trades.append(['BUY', symb, entry[0], entry[1]])
     return trades
 
