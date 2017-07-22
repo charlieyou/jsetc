@@ -6,7 +6,7 @@ team_name = "CHARLIETHEUNICORN"
 ORDER_ID = 0
 
 # True if testing mode, False if production mode
-test_switch = True
+test_switch = False
 port = 25000
 
 if test_switch:
