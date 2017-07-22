@@ -36,17 +36,19 @@ def read_exchange(exchange):
 #################### TRADING ALGORITHM ####################
 def trade(exchange):
     data = read_exchange(exchange)
+    func_list = [bond_trade, bond_aggressive]
     while data:
-        buy, sell = bond_trade(data)
-        if buy:
-            buy_price, buy_size = buy
-            if buy_size > 0:
-                make_trade(exchange, 'BUY', 'BOND', buy_price, buy_size)
-        if sell:
-            sell_price, sell_size = sell
-            if sell_size > 0:
-                make_trade(exchange, 'SELL', 'BOND', sell_price, sell_size)
-        data = read_exchange(exchange)
+        for f in func_list:
+            buy, sell = f(data)
+            if buy:
+                buy_price, buy_size = buy
+                if buy_size > 0:
+                    make_trade(exchange, 'BUY', 'BOND', buy_price, buy_size)
+            if sell:
+                sell_price, sell_size = sell
+                if sell_size > 0:
+                    make_trade(exchange, 'SELL', 'BOND', sell_price, sell_size)
+            data = read_exchange(exchange)
 
 
 def bond_trade(data):
@@ -65,6 +67,21 @@ def bond_trade(data):
                 buy[1] += size
     return buy, sell
 
+def bond_aggressive(data):
+    buy = sell = None
+    if data['type'] == 'book' and data['symbol'] == 'BOND':
+        bids = data['buy']
+        sell = [1005, 0]
+        for price, size in bids:
+            if price > 1000:
+                sell[1] += size
+
+        asks = data['sell']
+        buy = [995, 0]
+        for price, size in asks:
+            if price < 1000:
+                buy[1] += size
+    return buy, sell
 
 def make_trade(exchange, buysell, symbol, price, size):
     write_exchange(exchange, {'type': 'add', 'order_id': ORDER_ID,
