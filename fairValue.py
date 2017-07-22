@@ -23,21 +23,22 @@ def get_FVtrades(data):
 	"""Given the data in the book, decides whether we should make a trade.
 	Returns a list of trades (buy/sell, symbol, price, size).
 	"""
-        print(data)
 	trades = []
 	if(data['type'] != 'book'):
+        print("u fucked up #1")
 		return trades
 
 	symb = data['symbol'] #we've confirmed that it's a book, so it must have a symb
 	fv = fvList[symb]
 	if(fv[0] == None or fv[1] == None):
+        print("u fucked up #2")
 		return trades
 	
 	updateValues(data, symb)
 	fv = fvList[symb]
 	fv = sum(fv)/2
         
-        print data['buy']	
+    print data['buy']	
 	for entry in data['buy']:
 		if(entry['price'] > fv):
 			trades.append(['SELL', symb, entry['price'], entry['size']])
