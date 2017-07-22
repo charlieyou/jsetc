@@ -17,7 +17,7 @@ def updateValues(data, symb):
 		if(fvList[symb][1] == None):
 			fvList[symb][1] = mean_sell
 		else:
-			fvList[symb][1] = (fvList[symb][0] + mean_sell)/2
+		    fvList[symb][1] = (fvList[symb][0] + mean_sell)/2
 
 def get_FVtrades(data):
 	"""Given the data in the book, decides whether we should make a trade.
@@ -37,7 +37,6 @@ def get_FVtrades(data):
 	fv = sum(fv)/2
 	
 	for entry in data['buy']:
-		print(entry)
 		if(entry['price'] > fv):
 			trades.append(['SELL', symb, entry['price'], entry['size']])
 	for entry in data['sell']:

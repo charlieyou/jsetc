@@ -36,9 +36,12 @@ def read_exchange(exchange):
 
 #################### TRADING ALGORITHM ####################
 def trade(exchange):
+    i = 0
     while True:
         data = read_exchange(exchange)
         if(data==None):
+            i += 1
+            print(i)
             continue
         fvTrades = fV.get_FVtrades(data)
         #print(fvTrades)
