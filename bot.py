@@ -17,6 +17,6 @@ class Bot:
         while data:
             trades = []
             for strategy in self.strategies:
-                trades.extend(strategy.trade(data))
+                trades.extend(strategy.trade(self.exchange))
             self.exchange.trade_batch(trades)
             data = self.exchange.read()
