@@ -41,6 +41,7 @@ def trade(exchange):
         if(data==None):
             continue
         fvTrades = fV.get_FVtrades(data)
+        print(fvTrades)
         for trade in fvTrades:
             make_trade(exchange, trade[0], trade[1], trade[2], trade[3])
 
