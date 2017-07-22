@@ -25,7 +25,8 @@ def get_FVtrades(data):
 	Returns a list of trades (buy/sell, symbol, price, size).
 	"""
 	trades = []
-	fv = fvList[data['symb']]
+	symb = data['symbol']
+	fv = fvList[symb]
 	if(data['type'] != 'book'):
 		return trades
 	if(fv[0] == None or fv[1] == None):
@@ -36,9 +37,9 @@ def get_FVtrades(data):
 	
 	for entry in data['buy']:
 		if(entry['price'] > fv):
-			trades += ['SELL', data['symb'], entry['price'], entry['size']]
+			trades += ['SELL', symb, entry['price'], entry['size']]
 	for entry in data['sell']:
 		if(entry['price']<fv):
-			trades += ['BUY', data['symb'], entry['price'], entry['size']]
+			trades += ['BUY', symb, entry['price'], entry['size']]
 	return trades
 
