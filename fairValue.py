@@ -29,6 +29,8 @@ class FairValue(Strategy):
 		"""Given the data in the book, decides whether we should make a trade.
 		Returns a list of trades (buy/sell, symbol, price, size).
 		"""
+		if(data['type']!='book'):
+			return
 		trades = []
 		fv = sum(fairValues[data['symb']])
 		if(fv[0]==None or fv[1]==None):
