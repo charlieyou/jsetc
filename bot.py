@@ -5,10 +5,10 @@ import json
 
 team_name = "CHARLIETHEUNICORN"
 # True if testing mode, False if production mode
-test_on = True
+test_switch = True
 port = 25000
 
-if test_switch == 0:
+if test_switch:
     host_name = "test-exch-" + team_name
 else:
     host_name = "production"
