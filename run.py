@@ -1,6 +1,9 @@
 import argparse
 import time
 
+import errno
+from socket import error as socket_error
+
 from exchange import Exchange
 from bot import Bot
 
@@ -21,12 +24,11 @@ if __name__ == '__main__':
 
     strategies = args.strategies.split(',')
     while True:
-        main(strategies, args.test)
-        '''
         try:
             main(strategies, args.test)
-        except:
+        except socket_error as serr:
+            if serr.errno != errno.ECONNREFUSED:
+                raise serr
             # TODO metrics for each round
             print "Sleeping..."
             time.sleep(1)
-        '''
