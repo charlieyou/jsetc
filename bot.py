@@ -1,8 +1,10 @@
 import socket
 import json
 
+#################### GLOBAL VARIABLES ####################
 team_name = "CHARLIETHEUNICORN"
-order_id = 0
+global ORDER_ID
+ORDER_ID = 0
 
 # True if testing mode, False if production mode
 test_switch = True
@@ -12,17 +14,17 @@ if test_switch:
     host_name = "test-exch-" + team_name
 else:
     host_name = "production"
-    
+
+
+#################### EXCHANGE CONNECTION ####################
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((host_name, port))
     return s.makefile('rw', 1)
 
-
 def write_exchange(exchange, obj):
     json.dump(obj, exchange)
     exchange.write("\n")
-
 
 def read_exchange(exchange):
     data = exchange.readline()
@@ -30,8 +32,9 @@ def read_exchange(exchange):
         return None
     else:
         return json.loads(data)
-      
 
+
+#################### TRADING ALGORITHM ####################
 def trade(exchange):
     data = read_exchange(exchange)
     while data:
@@ -68,10 +71,10 @@ def make_trade(exchange, buysell, symbol, price, size):
     write_exchange(exchange, {'type': 'add', 'order_id': order_id,
                               'symbol': symbol, 'dir': buysell, 'price': price,
                               'size': size})
-    global order_id
-    order_id += 1
+    ORDER_ID += 1
 
 
+#################### MAIN ####################
 def main():
     exchange = connect()
     write_exchange(exchange, {"type": "hello", "team": team_name})
