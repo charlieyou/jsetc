@@ -2,21 +2,20 @@ from __future__ import division
 
 fvList = {"AAPL": [None,None], "BOND": [None,None], "GOOG": [None,None], "MSFT": [None,None], "NOKFH": [None,None], "NOKUS": [None,None], "XLK": [None,None]}
 
-def updateValues(data, fv):
-	symb = data['symb']
+def updateValues(data, symb):
 	buys = data['buy']
 	sells = data['sell']
 	# TODO median
 	if(len(buys) > 0):
 		mean_buy = sum([price for price, size in buys]) / len(buys)
-		if(fairValues[symb][0] == None):
-			fairValues[symb][0] = mean_buy
+		if(fvList[symb][0] == None):
+			fvList[symb][0] = mean_buy
 		else:
-			fairValues[symb][0] = (fairValues[symb][0] + mean_buy)/2
+			fvList[symb][0] = (fvList[symb][0] + mean_buy)/2
 	if(len(sells) > 0):
 		mean_sell = sum([price for price, size in sells])/ len(sells)
-		if(fairValues[symb][1] == None):
-			fairValues[symb][1] = mean_sell
+		if(fvList[symb][1] == None):
+			fvList[symb][1] = mean_sell
 		else:
 			fvList[symb][1] = (fvList[symb][0] + mean_sell)/2
 
@@ -25,14 +24,14 @@ def get_FVtrades(data):
 	Returns a list of trades (buy/sell, symbol, price, size).
 	"""
 	trades = []
-	symb = data['symbol']
 	fv = fvList[symb]
 	if(data['type'] != 'book'):
 		return trades
 	if(fv[0] == None or fv[1] == None):
 		return trades
-		
-	updateValues(data)
+	
+	symb = data['symb']
+	updateValues(data, symb)
 	fv = sum(fv)/2
 	
 	for entry in data['buy']:
