@@ -27,7 +27,7 @@ def get_FVtrades(data):
 	if(data['type'] != 'book'):
 		return trades
 
-	symb = data['symb'] #we've confirmed that it's a book, so it must have a symb
+	symb = data['symbol'] #we've confirmed that it's a book, so it must have a symb
 	fv = fvList[symb]
 	if(fv[0] == None or fv[1] == None):
 		return trades
