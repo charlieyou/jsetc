@@ -30,10 +30,11 @@ def get_FVtrades(data):
     print(data)
 	symb = data['symbol'] #we've confirmed that it's a book, so it must have a symb
 	fv = fvList[symb]
+    
+    updateValues(data, symb)
 	if(fv[0] == None or fv[1] == None):
 		return trades
 	
-	updateValues(data, symb)
 	fv = fvList[symb]
 	fv = sum(fv)/2
         
