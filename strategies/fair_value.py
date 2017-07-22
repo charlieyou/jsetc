@@ -23,10 +23,8 @@ def trade(exchange):
     """Given the data in the book, decides whether we should make a trade.
     Returns a list of trades (buy/sell, symbol, price, size).
     """
-    data = exchange.read()
+    data = read_exchange(exchange)
     trades = []
-    if data == None:
-        return trades
     if(data['type'] != 'book'):
         return trades
     symb = data['symbol']
@@ -38,12 +36,13 @@ def trade(exchange):
 
     fv = fvList[symb]
     fv = sum(fv)/2
+    diff = fv / 200
 
     for entry in data['buy']:
-        if(int(entry[0]) > fv + 10):
+        if(int(entry[0]) > fv + diff):
             trades.append(['SELL', symb, entry[0], entry[1]])
     for entry in data['sell']:
-        if(int(entry[0]) < fv - 10):
+        if(int(entry[0]) < fv - diff):
             trades.append(['BUY', symb, entry[0], entry[1]])
     return trades
 
