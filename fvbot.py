@@ -45,14 +45,14 @@ def trade(exchange):
 
 def bond_trade(data):
     buy, sell = bond_trade_helper(data)
-        if buy:
-            buy_price, buy_size = buy
-        if sell:
-            sell_price, sell_size = sell
-        if buy_size > 0:
-            make_trade(exchange, 'BUY', 'BOND', buy_price, buy_size)
-        if sell_size > 0:
-            make_trade(exchange, 'SELL', 'BOND', sell_price, sell_size)
+    if buy:
+        buy_price, buy_size = buy
+    if sell:
+        sell_price, sell_size = sell
+    if buy_size > 0:
+        make_trade(exchange, 'BUY', 'BOND', buy_price, buy_size)
+    if sell_size > 0:
+        make_trade(exchange, 'SELL', 'BOND', sell_price, sell_size)
 
 def bond_trade_helper(data):
     buy = sell = None
