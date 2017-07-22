@@ -38,7 +38,7 @@ def read_exchange(exchange):
 def trade(exchange):
     while True:
         data = read_exchange(exchange)
-        fvTrades = trade(data)
+        fvTrades = fV.trade(data)
         for trade in fV.fvTrades:
             make_trade(exchange, trade[0], trade[1], trade[2], trade[3])
 
