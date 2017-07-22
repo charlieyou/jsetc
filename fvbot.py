@@ -1,6 +1,6 @@
 import socket
 import json
-import fairValue
+from fairValue import FairValue
 
 #################### GLOBAL VARIABLES ####################
 team_name = "CHARLIETHEUNICORN"
