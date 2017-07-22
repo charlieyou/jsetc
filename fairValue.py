@@ -40,10 +40,10 @@ def get_FVtrades(data):
         
         print data['buy']       
         for entry in data['buy']:
-                if(int(entry['price'])>fv):
-                        trades.append(['SELL', symb, entry['price'], entry['size']])
+                if(int(entry[0])>fv):
+                        trades.append(['SELL', symb, entry[0], entry[1]])
         for entry in data['sell']:
-                if(int(entry['price'])<fv):
-                        trades.append(['BUY', symb, entry['price'], entry['size']])
+                if(int(entry[0])<fv):
+                        trades.append(['BUY', symb, entry[0], entry[1]])
         return trades
 
