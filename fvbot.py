@@ -1,6 +1,6 @@
 import socket
 import json
-from fairValue import FairValue
+import fairValue
 
 #################### GLOBAL VARIABLES ####################
 team_name = "CHARLIETHEUNICORN"
@@ -38,7 +38,7 @@ def read_exchange(exchange):
 def trade(exchange):
     while True:
         data = read_exchange(exchange)
-        fvTrades = FairValue.trade(data)
+        fvTrades = trade(data)
         for trade in fvTrades:
             make_trade(exchange, trade[0], trade[1], trade[2], trade[3])
 
