@@ -23,15 +23,15 @@ def write_exchange(exchange, obj):
     exchange.write("\n")
 
 def read_exchange(exchange):
-    data = exchange.read()
+    data = exchange.readline()
     if(data == ""):
         return None
     else:
         return json.loads(data)
 
-def trade(exchange):
-    data = read_exchange(exchange) 
-    while data:
+def trade(exchange): 
+    while True:
+        data = read_exchange(exchange)
         print data
 
 def main():
