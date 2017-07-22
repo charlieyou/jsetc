@@ -38,12 +38,12 @@ def trade(exchange):
         buy, sell = bond_trade(data)
         if buy:
             buy_price, buy_size = buy
+            if buy_size > 0:
+                make_trade(exchange, 'BUY', 'BOND', buy_price, buy_size)
         if sell:
             sell_price, sell_size = sell
-        if buy_size > 0:
-            make_trade(exchange, 'BUY', 'BOND', buy_price, buy_size)
-        if sell_size > 0:
-            make_trade(exchange, 'SELL', 'BOND', sell_price, sell_size)
+            if sell_size > 0:
+                make_trade(exchange, 'SELL', 'BOND', sell_price, sell_size)
         data = read_exchange(exchange)
 
 
