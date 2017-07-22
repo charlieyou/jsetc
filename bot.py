@@ -4,8 +4,14 @@ import socket
 import json
 
 team_name = "CHARLIETHEUNICORN"
-host_name = "test-exch-" + team_name
-port=25000
+# True if testing mode, False if production mode
+test_on = True
+port = 25000
+
+if test_switch == 0:
+    host_name = "test-exch-" + team_name
+else:
+    host_name = "production"
 
 def connect():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,14 +33,12 @@ def trade(exchange):
     data = read_exchange(exchange) 
     while data:
         print data
-    return
 
 def main():
     exchange = connect()
     write_exchange(exchange, {"type": "hello", "team": team_name})
     hello_exchange = read_exchange(exchange)
     trade(exchange)
-    return
 
 if __name__ == '__main__':
     while True:
