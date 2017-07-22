@@ -1,5 +1,6 @@
 import socket
 import json
+import fairValue as fV
 
 #################### GLOBAL VARIABLES ####################
 team_name = "CHARLIETHEUNICORN"
@@ -34,24 +35,29 @@ def read_exchange(exchange):
 
 
 #################### TRADING ALGORITHM ####################
-def trade(exchange):
+def trade(data):
+    while True:
+        data = read_exchange(exchange)
+        bond_trade(exchange)
+        fvTrades = fV.get_FVtrades(data)
+        for trade in fvTrades:
+            make_trade(exchange, trade[0], trade[1], trade[2], trade[3])
+
+def bond_trade(exchange):
     data = read_exchange(exchange)
-    func_list = [bond_trade, bond_aggressive]
     while data:
-        for f in func_list:
-            buy, sell = f(data)
-            if buy:
-                buy_price, buy_size = buy
-                if buy_size > 0:
-                    make_trade(exchange, 'BUY', 'BOND', buy_price, buy_size)
-            if sell:
-                sell_price, sell_size = sell
-                if sell_size > 0:
-                    make_trade(exchange, 'SELL', 'BOND', sell_price, sell_size)
-            data = read_exchange(exchange)
+        buy, sell = bond_helper
+        if buy:
+            buy_price, buy_size = buy
+            if buy_size > 0:
+                make_trade(exchange, 'BUY', 'BOND', buy_price, buy_size)
+        if sell:
+            sell_price, sell_size = sell
+            if sell_size > 0:
+                make_trade(exchange, 'SELL', 'BOND', sell_price, sell_size)
+        data = read_exchange(exchange)
 
-
-def bond_trade(data):
+def bond_helper(data):
     buy = sell = None
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         bids = data['buy']
@@ -62,22 +68,6 @@ def bond_trade(data):
 
         asks = data['sell']
         buy = [999, 0]
-        for price, size in asks:
-            if price < 1000:
-                buy[1] += size
-    return buy, sell
-
-def bond_aggressive(data):
-    buy = sell = None
-    if data['type'] == 'book' and data['symbol'] == 'BOND':
-        bids = data['buy']
-        sell = [1005, 0]
-        for price, size in bids:
-            if price > 1000:
-                sell[1] += size
-
-        asks = data['sell']
-        buy = [995, 0]
         for price, size in asks:
             if price < 1000:
                 buy[1] += size
