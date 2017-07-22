@@ -51,13 +51,13 @@ def bond_trade(data):
     buy = sell = None
     if data['type'] == 'book' and data['symbol'] == 'BOND':
         bids = data['buy']
-        sell = (1001, 0)
+        sell = [1001, 0]
         for price, size in bids:
             if price > 1000:
                 sell[1] += size
 
         asks = data['sell']
-        buy = (999, 0)
+        buy = [999, 0]
         for price, size in asks:
             if price < 1000:
                 buy[1] += size
