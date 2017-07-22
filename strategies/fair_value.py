@@ -36,7 +36,7 @@ def trade(exchange):
 
     fv = fvList[symb]
     fv = sum(fv)/2
-    diff = fv / 100
+    diff = fv / 150
 
     for entry in data['buy']:
         if(int(entry[0]) > fv + diff):
