@@ -23,11 +23,12 @@ class Exchange:
 
     def read(self):
         data = self.stream.readline()
-        self.last_data = data
         if(data == ""):
             return None
         else:
-            return json.loads(data)
+            data = json.loads(data)
+            self.last_data = data
+            return data
 
     def write(self, data):
         json.dump(data, self.stream)
