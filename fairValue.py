@@ -23,11 +23,11 @@ def get_FVtrades(data):
 	"""Given the data in the book, decides whether we should make a trade.
 	Returns a list of trades (buy/sell, symbol, price, size).
 	"""
-        print(data)
-	trades = []
-	if(data['type'] != 'book'):
-		return trades
+    trades = []
+    if(data['type'] != 'book'):
+        return trades
 
+    print(data)
 	symb = data['symbol'] #we've confirmed that it's a book, so it must have a symb
 	fv = fvList[symb]
 	if(fv[0] == None or fv[1] == None):
