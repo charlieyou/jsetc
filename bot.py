@@ -24,18 +24,18 @@ def read_exchange(exchange):
         return json.loads(data)
 
 def trade(exchange):
-	data = read_from_exchange(exchange) 
-	while data:
-		print data
-	return
+    data = read_exchange(exchange) 
+    while data:
+        print data
+    return
 
-def main:
-	exchange = connect()
+def main():
+    exchange = connect()
     write_exchange(exchange, {"type": "hello", "team": team_name})
     hello_exchange = read_exchange(exchange)
     trade(exchange)
-	return
+    return
 
 if __name__ == '__main__':
-	while True:
-		main()
+    while True:
+        main()
