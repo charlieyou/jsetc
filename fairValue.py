@@ -27,7 +27,7 @@ def get_FVtrades(data):
 	trades = []
 	if(data['type']!='book'):
 		return trades
-	fv = fvList[data['symb']]
+	fv = fvList[data['symbol']]
 	if(fv[0]==None or fv[1]==None):
 		return trades
 	fv = sum(fv)/2
