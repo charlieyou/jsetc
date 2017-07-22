@@ -46,7 +46,7 @@ def trade(exchange):
 def bond_trade(exchange):
     data = read_exchange(exchange)
     while data:
-        buy, sell = bond_helper
+        buy, sell = bond_helper(data)
         if buy:
             buy_price, buy_size = buy
             if buy_size > 0:
