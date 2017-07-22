@@ -23,7 +23,7 @@ def get_FVtrades(data):
 	"""Given the data in the book, decides whether we should make a trade.
 	Returns a list of trades (buy/sell, symbol, price, size).
 	"""
-    print(data)
+        print(data)
 	trades = []
 	if(data['type'] != 'book'):
 		return trades
