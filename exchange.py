@@ -19,8 +19,11 @@ class Exchange:
 
         self.order_id = 0
 
+        # TODO keep track of current positions
+
     def read(self):
         data = self.stream.readline()
+        self.last_data = data
         if(data == ""):
             return None
         else:
@@ -33,6 +36,7 @@ class Exchange:
     def trade(self, buysell, symbol, price, size):
         trade = {'type': 'add', 'order_id': self.order_id, 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
+        self.order_id += 1
         print trade
         self.write(trade)
 
@@ -41,3 +45,10 @@ class Exchange:
         for buysell, symbol, price, size in trades:
             if buysell and size != 0:
                 self.trade(buysell, symbol, price, size)
+
+    def convert(self, buysell, symbol, size):
+        trade = {'type': 'convert', 'order_id': self.order_id,
+                 'symbol': symbol, 'dir': buysell, 'size': size}
+        self.order_Id += 1
+        print trade
+        self.write(trade)
