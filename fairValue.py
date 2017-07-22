@@ -24,13 +24,12 @@ def trade(data):
 	"""Given the data in the book, decides whether we should make a trade.
 	Returns a list of trades (buy/sell, symbol, price, size).
 	"""
+	trades = []
 	if(data['type']!='book'):
 		return trades
-	trades = []
-	fv = sum(fairValues[data['symb']])
 	if(fv[0]==None or fv[1]==None):
 		return trades
-	fv = sum(fv)/2
+	fv = sum(fairValues[data['symb']])/2
 	updateValues(data)
 	for entry in data['buy']:
 		if(entry['price']>fv):
