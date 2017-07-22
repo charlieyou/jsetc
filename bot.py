@@ -3,7 +3,6 @@ import json
 
 #################### GLOBAL VARIABLES ####################
 team_name = "CHARLIETHEUNICORN"
-global ORDER_ID
 ORDER_ID = 0
 
 # True if testing mode, False if production mode
@@ -68,9 +67,10 @@ def bond_trade(data):
 
 
 def make_trade(exchange, buysell, symbol, price, size):
-    write_exchange(exchange, {'type': 'add', 'order_id': order_id,
+    write_exchange(exchange, {'type': 'add', 'order_id': ORDER_ID,
                               'symbol': symbol, 'dir': buysell, 'price': price,
                               'size': size})
+    global ORDER_ID
     ORDER_ID += 1
 
 
