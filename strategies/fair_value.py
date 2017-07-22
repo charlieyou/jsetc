@@ -25,6 +25,8 @@ def trade(exchange):
     """
     data = exchange.read()
     trades = []
+    if data == None:
+        return trades
     if(data['type'] != 'book'):
         return trades
     symb = data['symbol']
