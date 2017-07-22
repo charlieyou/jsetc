@@ -24,13 +24,15 @@ def get_FVtrades(data):
 	Returns a list of trades (buy/sell, symbol, price, size).
 	"""
 	trades = []
-	fv = fvList[symb]
+	
 	if(data['type'] != 'book'):
 		return trades
+
+	symb = data['symb'] #we've confirmed that it's a book, so it must have a symb
+	fv = fvList[symb]
 	if(fv[0] == None or fv[1] == None):
 		return trades
 	
-	symb = data['symb']
 	updateValues(data, symb)
 	fv = sum(fv)/2
 	
