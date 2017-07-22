@@ -35,7 +35,7 @@ def read_exchange(exchange):
 
 #################### TRADING ALGORITHM ####################
 def trade(exchange):
-    while data:
+    while True:
         data = read_exchange(exchange)
         fvTrades = FairValue.trade(data)
         for trade in fvTrades:
