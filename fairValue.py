@@ -37,6 +37,7 @@ def get_FVtrades(data):
 	fv = sum(fv)/2
 	
 	for entry in data['buy']:
+		print(entry)
 		if(entry['price'] > fv):
 			trades.append(['SELL', symb, entry['price'], entry['size']])
 	for entry in data['sell']:
