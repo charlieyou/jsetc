@@ -38,8 +38,10 @@ def read_exchange(exchange):
 def trade(exchange):
     while True:
         data = read_exchange(exchange)
-        fvTrades = trade(data)
-        for trade in fV.fvTrades:
+        if(data==None):
+            continue
+        fvTrades = fV.get_FVtrades(data)
+        for trade in fvTrades:
             make_trade(exchange, trade[0], trade[1], trade[2], trade[3])
 
 def make_trade(exchange, buysell, symbol, price, size):

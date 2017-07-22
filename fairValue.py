@@ -18,9 +18,9 @@ def updateValues(data, fv):
 		if(fairValues[symb][1] == None):
 			fairValues[symb][1] = mean_sell
 		else:
-			fairValues[symb][1] = (fairValues[symb][0] + mean_sell)/2
+			fvList[symb][1] = (fvList[symb][0] + mean_sell)/2
 
-def trade(data):
+def get_FVtrades(data):
 	"""Given the data in the book, decides whether we should make a trade.
 	Returns a list of trades (buy/sell, symbol, price, size).
 	"""
@@ -30,9 +30,9 @@ def trade(data):
 		return trades
 	if(fv[0] == None or fv[1] == None):
 		return trades
-
+		
 	updateValues(data)
-	fv = sum(fvList[data['symb']])/2
+	fv = sum(fv)/2
 	
 	for entry in data['buy']:
 		if(entry['price'] > fv):
