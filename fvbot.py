@@ -40,7 +40,7 @@ def trade(exchange):
         data = read_exchange(exchange)
         if(data==None):
             continue
-        print(data)
+        #print(data)
         fvTrades = fV.get_FVtrades(data)
         #print(fvTrades)
         for trade in fvTrades:
