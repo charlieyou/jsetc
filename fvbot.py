@@ -47,11 +47,11 @@ def trade(exchange):
             make_trade(exchange, trade[0], trade[1], trade[2], trade[3])
 
 def make_trade(exchange, buysell, symbol, price, size):
-    write_exchange(exchange, {'type': 'add', 'order_id': order_id,
+    global ORDER_ID
+    write_exchange(exchange, {'type': 'add', 'order_id': ORDER_ID,
                               'symbol': symbol, 'dir': buysell, 'price': price,
                               'size': size})
-    global order_id
-    order_id += 1
+    ORDER_ID += 1
 
 
 #################### MAIN ####################
