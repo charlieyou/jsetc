@@ -21,9 +21,12 @@ if __name__ == '__main__':
 
     strategies = args.strategies.split(',')
     while True:
+        main(strategies, args.test)
+        '''
         try:
             main(strategies, args.test)
         except:
             # TODO metrics for each round
             print "Sleeping..."
             time.sleep(1)
+        '''
