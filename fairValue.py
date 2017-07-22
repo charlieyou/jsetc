@@ -27,7 +27,6 @@ def get_FVtrades(data):
         if(data['type'] != 'book'):
                 return trades
 
-        #print(data)
         symb = data['symbol'] #we've confirmed that it's a book, so it must have a symb
         fv = fvList[symb]
     
@@ -37,8 +36,7 @@ def get_FVtrades(data):
         
         fv = fvList[symb]
         fv = sum(fv)/2
-        
-        print data['buy']       
+            
         for entry in data['buy']:
                 if(int(entry[0])>fv):
                         trades.append(['SELL', symb, entry[0], entry[1]])
