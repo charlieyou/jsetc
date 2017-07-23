@@ -39,7 +39,7 @@ def trade(exchange):
 	#get fair values
 	nokus = fvList['NOKUS']
 	nokfh = fvList['NOKFH']
-	
+
 	print(fvList)
 	if(nokus[0]==None or nokus[1]==None or nokfh[0]==None or nokfh[1]==None):
 		return trades
@@ -56,7 +56,6 @@ def trade(exchange):
 		bsymb = 'NOKFH'
 		topFair = nokusFair
 
-	print(nokusFair + " " + nokfhFair)
 	if(abs(nokfhFair-nokusFair)>2):
 		if(data['symbol']==bsymb):
 			for sell_price, size in data['sell']:
