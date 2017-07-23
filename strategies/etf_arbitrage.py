@@ -46,6 +46,8 @@ def comb_stock_val(data, symb, mean_values):
         exp_buy += mean_values[0]
         exp_sell += mean_values[1]
 
+    print exp_buy
+    print exp_sell
     return exp_buy, exp_sell
 
 
