@@ -69,7 +69,7 @@ class Exchange:
             '''
 
             for args in trades:
-                if buysell and size > 0:
+                if args[0] and args[3] > 0:
                     if len(args) == 4:
                         self.trade(args[0], args[1], args[2], args[3])
                     elif len(args) == 3:
