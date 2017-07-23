@@ -1,6 +1,7 @@
 import socket
 import json
 
+portfolio = {"AAPL": None, "BOND": None, "GOOG": None, "MSFT": None, "NOKFH": None, "NOKUS": None, "XLK": None}
 
 class Exchange:
     def __init__(self, test, team_name='CHARLIETHEUNICORN', port=25000):
@@ -28,6 +29,14 @@ class Exchange:
         else:
             data = json.loads(data)
             self.last_data = data
+
+            #update our local copy of the portfolio, so we know how many of each stock we have
+            if(data['type']=='fill'):
+                if(data['dir']=='BUY'):
+                    portfolio[data['symbol']] += int(data['size'])
+                elif(data['dir']=='SELL'):
+                    portfolio[data['symbol']] -= int(data['size'])
+
             return data
 
     def write(self, data):
@@ -38,14 +47,19 @@ class Exchange:
         trade = {'type': 'add', 'order_id': self.order_id, 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
         self.order_id += 1
-        print trade
+        #print trade
         self.write(trade)
 
     def trade_batch(self, trades):
         # TODO check conflicts
-        for buysell, symbol, price, size in trades:
-            if buysell and size != 0:
-                self.trade(buysell, symbol, price, size)
+        if(len(trades)==4):
+            for buysell, symbol, price, size in trades:
+                if buysell and size > 0:
+                    self.trade(buysell, symbol, price, size)
+        elif(len(trades)==3):
+            for buysell, symbol, price in trades:
+                if buysell and size > 0:
+                    self.convert(buysell, symbol, size)
 
     def convert(self, buysell, symbol, size):
         trade = {'type': 'convert', 'order_id': self.order_id,
