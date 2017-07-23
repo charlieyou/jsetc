@@ -1,5 +1,5 @@
 from __future__ import division
-from fair_value import fvList
+from common import fvList
 import exchange
 
 def trade(exchange):
