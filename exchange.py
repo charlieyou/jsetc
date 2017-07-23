@@ -47,7 +47,7 @@ class Exchange:
         trade = {'type': 'add', 'order_id': self.order_id, 'symbol': symbol,
                  'dir': buysell, 'price': price, 'size': size}
         self.order_id += 1
-        #print trade
+        print trade
         self.write(trade)
 
     def trade_batch(self, trades):
