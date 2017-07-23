@@ -1,7 +1,7 @@
 import socket
 import json
 
-portfolio = {"AAPL": None, "BOND": None, "GOOG": None, "MSFT": None, "NOKFH": None, "NOKUS": None, "XLK": None}
+portfolio = {"AAPL": 0, "BOND": 0, "GOOG": 0, "MSFT": 0, "NOKFH": 0, "NOKUS": 0, "XLK": 0}
 
 class Exchange:
     def __init__(self, test, team_name='CHARLIETHEUNICORN', port=25000):
