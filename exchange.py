@@ -53,6 +53,11 @@ class Exchange:
     def trade_batch(self, trades):
         # TODO check conflicts
         if(trades):
+            '''
+            for t in trades:
+                if(len(t)==4):
+
+
             if(len(trades[0])==4):
                 for buysell, symbol, price, size in trades:
                     if buysell and size > 0:
@@ -61,7 +66,14 @@ class Exchange:
                 for buysell, symbol, size in trades:
                     if buysell and size > 0:
                         self.convert(buysell, symbol, size)
+            '''
 
+            for *args in trades:
+                if buysell and size > 0:
+                    if len(args) == 4:
+                        self.trade(args[0], args[1], args[2], args[3])
+                    elif len(args) == 3:
+                        self.convert(args[0], args[1], args[3])
     def convert(self, buysell, symbol, size):
         trade = {'type': 'convert', 'order_id': self.order_id,
                  'symbol': symbol, 'dir': buysell, 'size': size}
