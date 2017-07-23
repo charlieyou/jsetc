@@ -16,7 +16,7 @@ def trade(exchange):
 		return trades
 
 	symb = data['symbol']
-	if(symb!='NOKUS' or symb!='NOKFH'):
+	if(symb!='NOKUS' and symb!='NOKFH'):
 		#print("flag 3")
 		return trades
 	print("flag4")
