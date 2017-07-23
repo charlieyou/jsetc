@@ -65,6 +65,6 @@ class Exchange:
     def convert(self, buysell, symbol, size):
         trade = {'type': 'convert', 'order_id': self.order_id,
                  'symbol': symbol, 'dir': buysell, 'size': size}
-        self.order_Id += 1
+        self.order_id += 1
         print trade
         self.write(trade)
