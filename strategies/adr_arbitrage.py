@@ -17,8 +17,9 @@ def trade(exchange):
 
 	symb = data['symbol']
 	if(symb!='NOKUS' or symb!='NOKFH'):
-		print("flag 3")
+		#print("flag 3")
 		return trades
+	print("flag4")
 	#calculating the arbitrage
 	bsymb = 'NOKUS'
 	topFair = nokfhFair
