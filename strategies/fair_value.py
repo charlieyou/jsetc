@@ -1,6 +1,6 @@
 from __future__ import division
+from common import fvList
 
-fvList = {"AAPL": [None,None], "BOND": [None,None], "GOOG": [None,None], "MSFT": [None,None], "NOKFH": [None,None], "NOKUS": [None,None], "XLK": [None,None]}
 
 def updateValues(data, symb):
     buys = data['buy']
@@ -9,6 +9,7 @@ def updateValues(data, symb):
     if(len(buys) > 0):
         mean_buy = sum([int(price) for price, size in buys]) / len(buys)
         if(fvList[symb][0] == None):
+            print(fvList)
             fvList[symb][0] = mean_buy
         else:
             fvList[symb][0] = (fvList[symb][0] + mean_buy)/2

@@ -1,5 +1,4 @@
 from __future__ import division
-from common import fvList
 import exchange
 
 def trade(exchange):
