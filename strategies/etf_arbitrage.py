@@ -10,7 +10,7 @@ def trade(exchange):
         return trades
     
     symb = data['symbol']
-    exp_buy, exp_sell = exp_etf_val(data, symb, mean_values)
+    exp_buy, exp_sell = comb_stock_val(data, symb, mean_values)
     exp_avg = sum(exp_buy + exp_sell)/2
 
     if symb == 'XLK':
