@@ -8,8 +8,6 @@ def trade(exchange):
     
     if(data['type'] != 'book'):
         return trades
-    if(data['symbol'] != 'BOND' or data['symbol'] != 'AAPL' or data['symbol'] != 'MSFT' or data['symbol'] != 'GOOG' or data['symbol'] != 'XLK'):
-        return trades
     
     symb = data['symbol']
     exp_buy, exp_sell = exp_etf_val(data, symb, mean_values)
