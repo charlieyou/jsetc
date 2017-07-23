@@ -58,7 +58,7 @@ class Exchange:
                     if buysell and size > 0:
                         self.trade(buysell, symbol, price, size)
             elif(len(trades[0])==3):
-                for buysell, symbol, price in trades:
+                for buysell, symbol, size in trades:
                     if buysell and size > 0:
                         self.convert(buysell, symbol, size)
 
