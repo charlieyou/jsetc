@@ -30,6 +30,10 @@ def trade(exchange):
 	#get fair values
 	nokus = fvList['NOKUS']
 	nokfh = fvList['NOKFH']
+	
+	data = exchange.last_data
+	updateValues(data, data['symbol'])
+
 	print(fvList)
 	if(nokus[0]==None or nokus[1]==None or nokfh[0]==None or nokfh[1]==None):
 		return trades
@@ -37,7 +41,7 @@ def trade(exchange):
 	nokusFair = sum(nokus)/2
 	nokfhFair = sum(nokfh)/2
 
-	data = exchange.last_data
+	
 	if(data['type']!='book'):
 		return trades
 	symb = data['symbol']
@@ -55,6 +59,6 @@ def trade(exchange):
 		if(data['symbol']==bsymb):
 			for sell_price, size in data['sell']:
 				#if we can buy the lower worth for under the fair value of the higher, then we will
-				if sell_price < btick:
+				if sell_price < topFair:
 					trades.append(['BUY', bsymb, sell_price, size])
 		trades.append(['SELL', bsymb, max(portfolio[NOKFH], 10)])
