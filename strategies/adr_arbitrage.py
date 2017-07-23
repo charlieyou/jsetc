@@ -64,7 +64,7 @@ def trade(exchange):
 	# 	trades.append(['SELL', bsymb, max(portfolio[bsymb], 10)])
 
 	if(abs(nokfhFair-nokusFair)>2):
-		amt = int(fee/abs(nokfhFair-nokusFair)) + 1
+		amt = int(50/abs(nokfhFair-nokusFair)) + 1
 		trades.append(['SELL', bsymb, amt])
 
 	return trades
