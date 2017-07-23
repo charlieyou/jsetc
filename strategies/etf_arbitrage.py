@@ -33,6 +33,7 @@ def comb_stock_val(data, symb, mean_values):
     buys = data['buy']
     sells = data['sell']
 
+    print len(buys)
     if len(buys) > 0:
         mean_values[symb][0] = sum([int(price) for price, size in buys]) / len(buys)
     if len(sells) > 0:
@@ -46,8 +47,6 @@ def comb_stock_val(data, symb, mean_values):
         exp_buy += mean_values[0]
         exp_sell += mean_values[1]
 
-    print exp_buy
-    print exp_sell
     return exp_buy, exp_sell
 
 
