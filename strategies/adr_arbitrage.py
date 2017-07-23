@@ -1,9 +1,7 @@
-import fair_value
+from fair_value import fvList
 import exchange
 
 #[buy, sell]
-NOKUS_LAST = [None, None]
-NOKFH_LAST = [None, None]
 NOKUS_FAIR = fvList['NOKUS']
 NOKFH_FAIR = fvList['NOKFH']
 
