@@ -17,12 +17,13 @@ def update_values(data, symbol):
 def trade(exchange):
     trades = []
     data = exchange.last_data
-    symbol = data['symbol']
 
     if data['type'] == 'trade':
+        symbol = data['symbol']
         update_values(data, symbol)
 
     if data['type'] == 'book':
+        symbol = data['symbol']
         if values[symbol]:
             sma = mean(values[symbol])
             var = variance(values[symbol], sma)
