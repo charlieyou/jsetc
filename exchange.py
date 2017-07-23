@@ -73,7 +73,7 @@ class Exchange:
                     if len(args) == 4:
                         self.trade(args[0], args[1], args[2], args[3])
                     elif len(args) == 3:
-                        self.convert(args[0], args[1], args[3])
+                        self.convert(args[0], args[1], args[2])
     def convert(self, buysell, symbol, size):
         trade = {'type': 'convert', 'order_id': self.order_id,
                  'symbol': symbol, 'dir': buysell, 'size': size}
