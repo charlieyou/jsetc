@@ -21,13 +21,14 @@ class Exchange:
 
         # TODO keep track of current positions
 
-    def read(self):
+    def read(self, store_last=True):
         data = self.stream.readline()
         if(data == ""):
             return None
         else:
             data = json.loads(data)
-            self.last_data = data
+            if store_last:
+                self.last_data = data
             return data
 
     def write(self, data):
