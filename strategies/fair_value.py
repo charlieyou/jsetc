@@ -23,7 +23,7 @@ def trade(exchange):
     """Given the data in the book, decides whether we should make a trade.
     Returns a list of trades (buy/sell, symbol, price, size).
     """
-    data = exchange.read()
+    data = read_exchange(exchange)
     trades = []
     if(data['type'] != 'book'):
         return trades
