@@ -1,6 +1,6 @@
+from __future__ import division
 from fair_value import fvList
 import exchange
-from __future__ import division
 
 def trade(exchange):
 	"""
