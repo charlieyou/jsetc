@@ -29,7 +29,7 @@ def trade(exchange):
 		bsymb = 'NOKFH'
 		topFair = NOKUS_FAIR
 
-	if(abs(NOKFH_FAIR-NOKUS_FAIR)>10):
+	if(abs(NOKFH_FAIR-NOKUS_FAIR)>2):
 		for sell_price, size in data['sell']:
 			#if we can buy the lower worth for under the fair value of the higher, then we will
 			if sell_price < btick:
