@@ -11,6 +11,7 @@ def trade(exchange):
 	#get fair values
 	nokus = fvList['NOKUS']
 	nokfh = fvList['NOKFH']
+	print(fvList)
 	if(nokus[0]==None or nokus[1]==None or nokfh[0]==None or nokfh[1]==None):
 		return trades
 
@@ -23,7 +24,6 @@ def trade(exchange):
 	symb = data['symbol']
 	if(symb!='NOKUS' and symb!='NOKFH'):
 		return trades
-	print("flag5")
 	#calculating the arbitrage
 	bsymb = 'NOKUS'
 	topFair = nokfhFair
