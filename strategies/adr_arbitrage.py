@@ -5,6 +5,7 @@ def trade(exchange):
 	"""
 	Should return a list of trades to do.
 	"""
+	print("flag 1")
 	trades = []
 
 	#get fair values
@@ -14,10 +15,12 @@ def trade(exchange):
 	data = exchange.last_data
 	if(data['type']!='book'):
 		return trades
+
+	print("flag 2")
 	symb = data['symbol']
 	if(symb!='NOKUS' or symb!='NOKFH'):
 		return trades
-
+	print("flag 3")
 	#calculating the arbitrage
 	bsymb = 'NOKUS'
 	topFair = nokfhFair
