@@ -6,13 +6,13 @@ def trade(exchange):
 	"""
 	Should return a list of trades to do.
 	"""
-	print("flag1")
 	trades = []
 
 	#get fair values
 	nokus = fvList['NOKUS']
 	nokfh = fvList['NOKFH']
 	if(nokus[0]==None or nokus[1]==None or nokfh[0]==None or nokfh[1]==None):
+		print("flag2")
 		return trades
 
 	nokusFair = sum(nokus)/2
@@ -20,13 +20,13 @@ def trade(exchange):
 
 	data = exchange.last_data
 	if(data['type']!='book'):
+		print("flag3")
 		return trades
-	print("flag2")
 	symb = data['symbol']
 	if(symb!='NOKUS' and symb!='NOKFH'):
-		print("flag 3")
+		print("flag 4")
 		return trades
-	print("flag4")
+	print("flag5")
 	#calculating the arbitrage
 	bsymb = 'NOKUS'
 	topFair = nokfhFair
