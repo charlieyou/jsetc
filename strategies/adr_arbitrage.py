@@ -1,5 +1,6 @@
 from __future__ import division
 import exchange
+from fair_value import fvList
 
 def trade(exchange):
 	"""
