@@ -20,10 +20,10 @@ def trade(exchange):
 	data = exchange.last_data
 	if(data['type']!='book'):
 		return trades
-
+	print("flag2")
 	symb = data['symbol']
 	if(symb!='NOKUS' and symb!='NOKFH'):
-		#print("flag 3")
+		print("flag 3")
 		return trades
 	print("flag4")
 	#calculating the arbitrage
