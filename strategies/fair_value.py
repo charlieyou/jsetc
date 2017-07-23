@@ -25,7 +25,7 @@ def trade(exchange):
     """
     data = exchange.read()
     trades = []
-    if(data['type'] != 'book'):
+    if(data==None or data['type'] != 'book'):
         return trades
     symb = data['symbol']
     fv = fvList[symb]
