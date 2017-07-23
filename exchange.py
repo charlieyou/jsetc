@@ -52,14 +52,15 @@ class Exchange:
 
     def trade_batch(self, trades):
         # TODO check conflicts
-        if(len(trades)==4):
-            for buysell, symbol, price, size in trades:
-                if buysell and size > 0:
-                    self.trade(buysell, symbol, price, size)
-        elif(len(trades)==3):
-            for buysell, symbol, price in trades:
-                if buysell and size > 0:
-                    self.convert(buysell, symbol, size)
+        if(trades):
+            if(len(trades[0])==4):
+                for buysell, symbol, price, size in trades:
+                    if buysell and size > 0:
+                        self.trade(buysell, symbol, price, size)
+            elif(len(trades[0])==3):
+                for buysell, symbol, price in trades:
+                    if buysell and size > 0:
+                        self.convert(buysell, symbol, size)
 
     def convert(self, buysell, symbol, size):
         trade = {'type': 'convert', 'order_id': self.order_id,
