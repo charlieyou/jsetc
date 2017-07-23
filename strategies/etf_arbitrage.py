@@ -8,7 +8,7 @@ def trade(exchange):
     
     if(data['type'] != 'book'):
         return trades
-    if(data['symbol'] != 'BOND' or data['symbol'] != 'AAPL' or data['symbol'] != 'MSFT' or data['symbol'] != 'GOOG', data['symbol'] != 'XLK'):
+    if(data['symbol'] != 'BOND' or data['symbol'] != 'AAPL' or data['symbol'] != 'MSFT' or data['symbol'] != 'GOOG' or data['symbol'] != 'XLK'):
         return trades
     
     symb = data['symbol']
