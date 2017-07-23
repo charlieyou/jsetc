@@ -62,6 +62,6 @@ def trade(exchange):
 				#if we can buy the lower worth for under the fair value of the higher, then we will
 				if sell_price < topFair:
 					trades.append(['BUY', bsymb, sell_price, size])
-		trades.append(['SELL', bsymb, max(portfolio[NOKFH], 10)])
+		trades.append(['SELL', bsymb, max(exchange.portfolio[NOKFH], 10)])
 
 	return trades
