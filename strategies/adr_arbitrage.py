@@ -1,5 +1,6 @@
 from fair_value import fvList
 import exchange
+from __future__ import division
 
 def trade(exchange):
 	"""
@@ -8,8 +9,8 @@ def trade(exchange):
 	trades = []
 
 	#get fair values
-	nokusFair = fvList['NOKUS']
-	nokfhFair = fvList['NOKFH']
+	nokusFair = sum(fvList['NOKUS'])/2
+	nokfhFair = sum(fvList['NOKFH'])/2
 
 	data = exchange.last_data
 	if(data['type']!='book'):
