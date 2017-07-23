@@ -25,7 +25,7 @@ def trade(exchange):
 
     if data['type'] == 'book':
         symbol = data['symbol']
-        if values[symbol]:
+        if symbol in values and values[symbol]:
             sma = mean(values[symbol])
             var = variance(values[symbol], sma)
             for price, size in data['buy']:
