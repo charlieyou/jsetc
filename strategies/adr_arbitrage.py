@@ -1,5 +1,6 @@
 from __future__ import division
 import exchange
+from exchange import portfolio
 
 fvList = {"AAPL": [None,None], "BOND": [None,None], "GOOG": [None,None], "MSFT": [None,None], "NOKFH": [None,None], "NOKUS": [None,None], "XLK": [None,None]}
 
@@ -62,6 +63,6 @@ def trade(exchange):
 				#if we can buy the lower worth for under the fair value of the higher, then we will
 				if sell_price < topFair:
 					trades.append(['BUY', bsymb, sell_price, size])
-		trades.append(['SELL', bsymb, max(exchange.portfolio[NOKFH], 10)])
+		trades.append(['SELL', bsymb, max(portfolio[bsymb], 10)])
 
 	return trades
