@@ -4,7 +4,7 @@ def trade(exchange):
     # trade = ('BUY'/'SELL'/None, symbol, price, size)
     trades = []
     mean_values = {"AAPL": [None,None], "BOND": [None,None], "GOOG": [None,None], "MSFT": [None,None]}
-    data = exchange.last_read
+    data = exchange.last_data
     
     if(data['type'] != 'book'):
         return trades
