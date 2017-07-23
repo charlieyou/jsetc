@@ -27,6 +27,7 @@ def trade(exchange):
 
 	if(abs(nokfhFair-nokusFair)>2):
 		if(data['symbol']==bsymb):
+			print(data)
 			for sell_price, size in data['sell']:
 				#if we can buy the lower worth for under the fair value of the higher, then we will
 				if sell_price < btick:
