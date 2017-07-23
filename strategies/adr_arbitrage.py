@@ -6,6 +6,7 @@ def trade(exchange):
 	"""
 	Should return a list of trades to do.
 	"""
+	print("flag1")
 	trades = []
 
 	#get fair values
