@@ -1,6 +1,6 @@
 from __future__ import division
-import exchange
 from exchange import portfolio
+
 
 fvList = {"AAPL": [None,None], "BOND": [None,None], "GOOG": [None,None], "MSFT": [None,None], "NOKFH": [None,None], "NOKUS": [None,None], "XLK": [None,None]}
 
@@ -27,7 +27,7 @@ def trade(exchange):
 	Should return a list of trades to do.
 	"""
 	trades = []
-	
+
 	data = exchange.last_data
 	if(data['type']!='book'):
 		return trades
@@ -48,8 +48,6 @@ def trade(exchange):
 	nokusFair = sum(nokus)/2
 	nokfhFair = sum(nokfh)/2
 
-	
-	
 	#calculating the arbitrage
 	bsymb = 'NOKUS'
 	topFair = nokfhFair
