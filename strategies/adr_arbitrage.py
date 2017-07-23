@@ -1,6 +1,25 @@
 from __future__ import division
 import exchange
-from fair_value import fvList
+
+fvList = {"AAPL": [None,None], "BOND": [None,None], "GOOG": [None,None], "MSFT": [None,None], "NOKFH": [None,None], "NOKUS": [None,None], "XLK": [None,None]}
+
+def updateValues(data, symb):
+    buys = data['buy']
+    sells = data['sell']
+
+    if(len(buys) > 0):
+        mean_buy = sum([int(price) for price, size in buys]) / len(buys)
+        if(fvList[symb][0] == None):
+            print(fvList)
+            fvList[symb][0] = mean_buy
+        else:
+            fvList[symb][0] = (fvList[symb][0] + mean_buy)/2
+    if(len(sells) > 0):
+        mean_sell = sum([int(price) for price, size in sells])/ len(sells)
+        if(fvList[symb][1] == None):
+            fvList[symb][1] = mean_sell
+        else:
+            fvList[symb][1] = (fvList[symb][1] + mean_sell)/2
 
 def trade(exchange):
 	"""
