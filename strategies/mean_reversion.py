@@ -8,10 +8,11 @@ values = {'AAPL': [], 'GOOG': [], 'MSFT': [], 'NOKFH': [], 'NOKUS': [],
 
 
 def update_values(data, symbol):
-    last_trades = values[symbol]
-    if len(last_trades) > length:
-        last_trades = last_trades[1:]
-    last_trades.append(data['price'])
+    if symbol in values:
+        last_trades = values[symbol]
+        if len(last_trades) > length:
+            last_trades = last_trades[1:]
+        last_trades.append(data['price'])
 
 
 def trade(exchange):
