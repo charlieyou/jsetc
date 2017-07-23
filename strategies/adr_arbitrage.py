@@ -9,8 +9,13 @@ def trade(exchange):
 	trades = []
 
 	#get fair values
-	nokusFair = sum(fvList['NOKUS'])/2
-	nokfhFair = sum(fvList['NOKFH'])/2
+	nokus = fvList['NOKUS']
+	nokfh = fvList['NOKFH']
+	if(nokus[0]==None or nokus[1]==None or nokfh[0]==None or nokfh[1]==None):
+		return trades
+
+	nokusFair = sum(nokus)/2
+	nokfhFair = sum(nokfh)/2
 
 	data = exchange.last_data
 	if(data['type']!='book'):
