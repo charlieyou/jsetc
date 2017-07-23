@@ -68,7 +68,7 @@ class Exchange:
                         self.convert(buysell, symbol, size)
             '''
 
-            for *args in trades:
+            for args in trades:
                 if buysell and size > 0:
                     if len(args) == 4:
                         self.trade(args[0], args[1], args[2], args[3])
