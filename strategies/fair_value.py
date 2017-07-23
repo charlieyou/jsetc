@@ -1,6 +1,6 @@
 from __future__ import division
-from common import fvList
 
+fvList = {"AAPL": [None,None], "BOND": [None,None], "GOOG": [None,None], "MSFT": [None,None], "NOKFH": [None,None], "NOKUS": [None,None], "XLK": [None,None]}
 
 def updateValues(data, symb):
     buys = data['buy']
