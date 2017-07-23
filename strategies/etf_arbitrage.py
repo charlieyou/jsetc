@@ -39,7 +39,7 @@ def comb_stock_val(data, symb, mean_values):
 
     exp_buy = 0
     exp_sell = 0
-    for stock in mean_values:
+    for stock in mean_values.values():
         if mean_values[0] is None or mean_values[1] is None:
             return None
         exp_buy += mean_values[0]
